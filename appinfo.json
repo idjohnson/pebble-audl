@@ -4,7 +4,7 @@
         ""
     ],
     "companyName": "isaac.johnson@gmail.com",
-    "longName": "IDJAUDL2",
+    "longName": "AUDL Pebble",
     "projectType": "pebblejs",
     "resources": {
         "media": [
@@ -28,6 +28,136 @@
                 "file": "fonts/UbuntuMono-Regular.ttf",
                 "name": "MONO_FONT_14",
                 "type": "font"
+            },
+            {
+                "file": "images/DorkSquad2.png",
+                "name": "IMAGES_DORKSQUAD2_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/AUDLLogo.png",
+                "name": "IMAGES_AUDLLOGO_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/TeamIcons_pbl_77_CHA.png",
+                "name": "IMAGES_TEAMICONS_PBL_77_CHA_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/TeamIcons_pbl_77_NSH.png",
+                "name": "IMAGES_TEAMICONS_PBL_77_NSH_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/TeamIcons_pbl_77_JAX.png",
+                "name": "IMAGES_TEAMICONS_PBL_77_JAX_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/TeamIcons_pbl_77_RAL.png",
+                "name": "IMAGES_TEAMICONS_PBL_77_RAL_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/TeamIcons_pbl_77_ATL.png",
+                "name": "IMAGES_TEAMICONS_PBL_77_ATL_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/TeamIcons_pbl_77_DET.png",
+                "name": "IMAGES_TEAMICONS_PBL_77_DET_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/TeamIcons_pbl_77_MIN.png",
+                "name": "IMAGES_TEAMICONS_PBL_77_MIN_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/TeamIcons_pbl_77_CIN.png",
+                "name": "IMAGES_TEAMICONS_PBL_77_CIN_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/TeamIcons_pbl_77_CHI.png",
+                "name": "IMAGES_TEAMICONS_PBL_77_CHI_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/TeamIcons_pbl_77_PIT.png",
+                "name": "IMAGES_TEAMICONS_PBL_77_PIT_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/TeamIcons_pbl_77_IND.png",
+                "name": "IMAGES_TEAMICONS_PBL_77_IND_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/TeamIcons_pbl_77_MAD.png",
+                "name": "IMAGES_TEAMICONS_PBL_77_MAD_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/TeamIcons_pbl_77_PHI.png",
+                "name": "IMAGES_TEAMICONS_PBL_77_PHI_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/TeamIcons_pbl_77_ROC.png",
+                "name": "IMAGES_TEAMICONS_PBL_77_ROC_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/TeamIcons_pbl_77_OTT.png",
+                "name": "IMAGES_TEAMICONS_PBL_77_OTT_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/TeamIcons_pbl_77_DC.png",
+                "name": "IMAGES_TEAMICONS_PBL_77_DC_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/TeamIcons_pbl_77_MTL.png",
+                "name": "IMAGES_TEAMICONS_PBL_77_MTL_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/TeamIcons_pbl_77_TOR.png",
+                "name": "IMAGES_TEAMICONS_PBL_77_TOR_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/TeamIcons_pbl_77_NY.png",
+                "name": "IMAGES_TEAMICONS_PBL_77_NY_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/TeamIcons_pbl_77_SD.png",
+                "name": "IMAGES_TEAMICONS_PBL_77_SD_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/TeamIcons_pbl_77_VAN.png",
+                "name": "IMAGES_TEAMICONS_PBL_77_VAN_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/TeamIcons_pbl_77_LA.png",
+                "name": "IMAGES_TEAMICONS_PBL_77_LA_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/TeamIcons_pbl_77_SF.png",
+                "name": "IMAGES_TEAMICONS_PBL_77_SF_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/TeamIcons_pbl_77_SEA.png",
+                "name": "IMAGES_TEAMICONS_PBL_77_SEA_PNG",
+                "type": "png"
             },
             {
                 "file": "images/TeamIcons_pbl_50_CHA.png",
@@ -161,7 +291,8 @@
             }
         ]
     },
-    "shortName": "IDJAUDL2",
+    "sdkVersion": "3",
+    "shortName": "AUDLPBL",
     "uuid": "7573ce90-c74f-44b5-acf6-a3beeb667b55",
     "versionCode": 1,
     "versionLabel": "1.0",
