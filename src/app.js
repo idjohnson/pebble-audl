@@ -7,11 +7,10 @@
 var UI = require('ui');
 var Vector2 = require('vector2');
 var ajax = require('ajax');
-
+var Accel = require('ui/accel');
 var teamInfo = require('team_info'); 
 
-var displayVersion = "Beta 1.1";
-
+var displayVersion = "Beta 1.1.1";
 
 var nameHash = {};
 var statsHash = {};
@@ -92,7 +91,7 @@ function gameDetails(window, gameDate, hometeam, awayteam)
   var vstxt = new UI.Text({
     position: new Vector2(0, 30),
     size: new Vector2(144, 25),
-    text: "- vs -",
+    text: "(home) - vs - (away)",
     color:'black',
     textAlign:'center',
     backgroundColor:'white'
@@ -482,7 +481,8 @@ main.on('click', 'up', function(e) {
             var teamDetailCard = new UI.Card({
               title: data.name,
               subtitle: "Games Played: " + data.numberOfGames,
-              body: "First Game: " + data.firstGameDate + '\n' + "Latest Game: " + data.lastGameDate
+              body: "First Game: " + data.firstGameDate + '  ' + "Latest Game: " + data.lastGameDate,
+              style: "small"
             });
             // Show the new Card
             teamDetailCard.show();
@@ -631,12 +631,13 @@ main.on('click', 'up', function(e) {
       
               console.log("start string replace");
               var resultsObj = CSVToArray(req.responseText,',');
-              for (var k = 0; k < resultsObj.length; k++) {
+              // set as 1 to skip headings.. was going to check for "Date"
+              for (var k = 1; k < resultsObj.length; k++) {
                 if (resultsObj[k][0] === "")
                 {
                   // skip
                 } else {
-                  scheduleMenu.item(0, k, { title: resultsObj[k][0], subtitle: resultsObj[k][5] + " v " + resultsObj[k][6], scrollable: true });
+                  scheduleMenu.item(0, (k - 1), { title: resultsObj[k][0], subtitle: resultsObj[k][5] + " v " + resultsObj[k][6], scrollable: true });
                 }
               }
               
@@ -756,36 +757,15 @@ main.on('select', function(e) {
 main.show();
   
 main.on('click', 'down', function(e) {
-  //var card = new UI.Card();
+  var card = new UI.Card();
   
-  console.log("before");
-  
-  console.log(teamInfo.teams[0].cloudId);
-  console.log(teamInfo.teams[0].name);
-  
-  var teamsMenu = new UI.Menu();
-  for (var i = 0; i < teamInfo.teams.length; i++) {
-    var teamName = teamInfo.teams[i].name;
-    var teamId = teamInfo.teams[i].cloudId;
-    var iconText = "images/TeamIcons_pbl_50_" + teamInfo.teams[i].icn + ".png";
-   // teamsMenu.item(0, i, { title: " " + teamName, subtitle: " " + teamId, icon: iconText });
-    teamsMenu.item(0, i, { title: " " + teamName });
-  }
-          
-   
-  console.log("after");
-  teamsMenu.show();
-  
-  teamsMenu.on('select', function(e) {
-    console.log('Selected item #' + e.itemIndex + ' of section #' + e.sectionIndex);
-    console.log('The item is titled "' + e.item.title + '"');
-  });
-  /*
-  card.title('A Card');
-  card.subtitle('Is a Window...' + teamInfo.teams[1].name);
-  card.body('The simplest window type in Pebble.js.');
+  card.title('AUDL');
+  card.subtitle('Legal');
+  card.body('All Images copyrighted by the American Ultimate Disc League and respective teams. Statistics provided by REST api of ultimate-numbers.com. Schedule from Google Docs.');
+  card.style('small');
+  card.scrollable('true');
   card.show();
-  */
+  
 });
 
 
