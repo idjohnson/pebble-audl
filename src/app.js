@@ -647,9 +647,10 @@ main.on('click', 'up', function(e) {
               
               scheduleMenu.on('select', function(e) {
                 // scheduled game details
-                var gameDate = resultsObj[e.itemIndex][0] + " " + resultsObj[e.itemIndex][1] + resultsObj[e.itemIndex][2] + " " + resultsObj[e.itemIndex][3];
-                var hometeam = resultsObj[e.itemIndex][5];
-                var awayteam = resultsObj[e.itemIndex][6];
+                var picked = (e.itemIndex + 1);
+                var gameDate = resultsObj[picked][0] + " " + resultsObj[picked][1] + resultsObj[picked][2] + " " + resultsObj[picked][3];
+                var hometeam = resultsObj[picked][5];
+                var awayteam = resultsObj[picked][6];
                 
                 var gameDetailsWindow = new UI.Window();
                 //teamDetails(detailsWindows, "San Jose Spiders", "W: 5 | L: 0 | PD: 25", "SJ");
@@ -761,7 +762,7 @@ main.on('click', 'down', function(e) {
   
   card.title('AUDL');
   card.subtitle('Legal');
-  card.body('All Images copyrighted by the American Ultimate Disc League and respective teams. Statistics provided by REST api of ultimate-numbers.com. Schedule from Google Docs.');
+  card.body('All Images copyrighted by the American Ultimate Disc League and respective teams. Statistics provided by REST api of ultimate-numbers.com. Schedule from Google Docs. ');
   card.style('small');
   card.scrollable('true');
   card.show();
