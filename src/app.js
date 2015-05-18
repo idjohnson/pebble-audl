@@ -7,10 +7,9 @@
 var UI = require('ui');
 var Vector2 = require('vector2');
 var ajax = require('ajax');
-var Accel = require('ui/accel');
 var teamInfo = require('team_info'); 
 
-var displayVersion = "Beta 1.1.1";
+var displayVersion = "Release 1.0";
 
 var nameHash = {};
 var statsHash = {};
@@ -19,9 +18,6 @@ var icnHash = {};
 // function for showing the parking selector
 function teamDetails(window, name, stats, icnkey)
 {
-  console.log("teamDetails: name: " + name);
-  console.log("teamDetails: stats: " + stats);
-  console.log("teamDetails: icnkey: " + icnkey);
   // Top rectangle to blank out the page
   var rect = new UI.Rect({ 
     position: new Vector2(0, 0),
@@ -61,15 +57,11 @@ function teamDetails(window, name, stats, icnkey)
   window.add(teamLogo);
   window.add(teamName);
   window.add(teamStats);
-  
 }
 
 function gameDetails(window, gameDate, hometeam, awayteam)
 {
   // scheduled game details
-  console.log("teamDetails: gameDate: " + gameDate);
-  console.log("teamDetails: teams: " + hometeam);
-  console.log("teamDetails: teams: " + awayteam);
   // Top rectangle to blank out the page
   var rect = new UI.Rect({ 
     position: new Vector2(0, 0),
@@ -170,7 +162,6 @@ function versionScreen(window)
     text: displayVersion,
     color:'white',
     textAlign:'center',
-    
   });
   
   window.add(rect);
@@ -313,7 +304,6 @@ displayMenu.on('select', function(event) {
   var AUDLURL = "http://ec2-54-86-111-95.compute-1.amazonaws.com:4001/Web/Standings?callback=asdf&_=" + milliseconds;
 
   var scoresMenu = new UI.Menu();
-  
   var idx = 0;
   
   var req = new XMLHttpRequest();
@@ -429,20 +419,9 @@ displayMenu.on('select', function(event) {
 });
 
 
-//  icon: 'images/menu_icon.png',
-    
-
+// First Screen
 var main = new UI.Window();
 mainScreen(main);
-/*
-var main = new UI.Card({
-  title: 'AUDL2GO',
-  icon: 'images/AUDLLogo.png',
-  subtitle: 'AUDL',
-  body: 'American Ultimate Disc League'
-});
-*/
-
 main.show();
 
 main.on('click', 'up', function(e) {
@@ -529,32 +508,12 @@ main.on('click', 'up', function(e) {
       } else if (e.itemIndex === 2) {
         // Games
         var teamGameMenu = new UI.Menu();
-        /*
-        var section = {
-          title: e.item.title
-        };
-        teamGameMenu.section(0, section);
-        
-        var keyMap = {};
-        var keysList = [];
-        */
-        for (var i = 0; i < teamInfo.teams.length; i++) {
-       /*
-          keyMap[teamInfo.teams[i].msSinceEpoch] = i;
-          keysList.push(teamInfo.teams[i].msSinceEpoch);
-        }
-        keysList.sort();
-        
-        for (var j = 0; j < keysList.length; j++)
-        {
-          var tKey = keyMap[keysList[j]];
-          */
-          var teamName = teamInfo.teams[i].name;
-          teamGameMenu.item(0, i, { title: " " + teamName });
+        for (var ii = 0; ii < teamInfo.teams.length; ii++) {
+          var teamName2 = teamInfo.teams[ii].name;
+          teamGameMenu.item(0, ii, { title: " " + teamName2 });
         }
 
         teamGameMenu.show();
-
         teamGameMenu.on('select', function(e) {
           
           var TGRU = "http://www.ultimate-numbers.com/rest/view/team/" + teamInfo.teams[e.itemIndex].cloudId + "/games"; 
@@ -608,11 +567,8 @@ main.on('click', 'up', function(e) {
         });
       } else if (e.itemIndex === 3) 
       {
+        // Google Doc with my API Key. 
         var GDOC = "https://docs.google.com/spreadsheets/export?id=1Qkup3uHxKgsuLgOJQ-L9S-YoTa5zNp3mu4SPk9abvKY&exportFormat=csv&key=AIzaSyD51aJRxs-vxk5QpyuSgSg7YsmFBU3aATQ";
-        // may have to add ?key=AIzaSyD51aJRxs-vxk5QpyuSgSg7YsmFBU3aATQ
-  
-       // var sections = [];
-       // var items = [];
       
         console.log("you want a schedule...");
         var scheduleMenu = new UI.Menu();
@@ -643,8 +599,7 @@ main.on('click', 'up', function(e) {
               
               //show results
               scheduleMenu.show();
-              
-              
+                          
               scheduleMenu.on('select', function(e) {
                 // scheduled game details
                 var picked = (e.itemIndex + 1);
@@ -679,12 +634,8 @@ main.on('longClick', 'select', function(e) {
 });
 
 main.on('longClick', 'up', function(e) {
-  
   var milliseconds = (new Date).getTime();
   var AUDLURL = "http://ec2-54-86-111-95.compute-1.amazonaws.com:4001/Web/Standings?callback=asdf&_=" + milliseconds;
-  
-  var sections = [];
-  var items = [];
 
   var scoresMenu = new UI.Menu();
   
@@ -709,7 +660,6 @@ main.on('longClick', 'up', function(e) {
         console.log("done with string replace");
         var response = JSON.parse(newstr2);
         console.log("parsed json");
-        var aTeamName = response.West[0].name;
         console.log("print found team name");
         
         var myStringArray = response.West;
@@ -721,24 +671,8 @@ main.on('longClick', 'up', function(e) {
             var iconText = "images/TeamIcons_pbl_50_" + myStringArray[i].nm + ".png";
             var obj = {};
           
-             //main.item(0, i, { title: titleText, subtitle: subText, icon: icon });
-             //scoresMenu.item(0, i, { title: " " + titleText, subtitle: " " + subText });
-             scoresMenu.item(0, i, { title: " " + titleText, subtitle: " " + subText, icon: iconText });
-          
-          /*
-            obj['title'] = myStringArray[i].name;
-            obj['subtitle'] =  "W: " + myStringArray[i].wins + " L: " + myStringArray[i].losses + " PD: " + myStringArray[i].plmn;
-            obj['icon'] = "http://ec2-54-86-111-95.compute-1.amazonaws.com:4001/Logos/TeamIcons_" + myStringArray[i].nm + ".png";
-            items.push(obj);
- */
-            //Do something
+            scoresMenu.item(0, i, { title: " " + titleText, subtitle: " " + subText, icon: iconText });
         }
- //       sections.push(items); 
-         
-        
-        console.log(response);
-        console.log(aTeamName);
-
       } else {
         console.log("Error");
       }
@@ -762,11 +696,10 @@ main.on('click', 'down', function(e) {
   
   card.title('AUDL');
   card.subtitle('Legal');
-  card.body('All Images copyrighted by the American Ultimate Disc League and respective teams. Statistics provided by REST api of ultimate-numbers.com. Schedule from Google Docs. ');
+  card.body('All Images copyrighted by the American Ultimate Disc League and respective teams. Statistics provided by REST api of ultimate-numbers.com. Schedule from Google Docs. Created by isaac.johnson@gmail.com');
   card.style('small');
   card.scrollable('true');
   card.show();
-  
 });
 
 
@@ -776,8 +709,5 @@ main.on('click', 'select', function(e){
 });
 
 displayMenu.on('click', 'back', function(e){
-
-  console.log("heading back now...");
-
   displayMenu.hide();
 });
